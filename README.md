@@ -1,4 +1,6 @@
-# acebook-rails-template-simple
+# All CSS no style
+
+This project is a clone of Facebook
 
 ### The Team
 
@@ -9,7 +11,16 @@
 [![Daniel](https://img.icons8.com/nolan/25/github.png)](https://github.com/legal-dan) Daniel |
 [![Ed](https://img.icons8.com/nolan/25/github.png)](https://github.com/EMDevelop) Ed |
 
+### How to run
+
+- Clone this repo running `git clone https://github.com/99ltaylor/acebook-all-css-no-style.git`
+- Run `rackup` to start the web server
+
 ### Planning
+
+#### Wireframe
+
+![wireframe](https://github.com/EMDevelop/public_resources/blob/main/images/acebook/Screenshot%202021-10-11%20at%2016.26.42.png 'wireframe')
 
 #### Trello
 
