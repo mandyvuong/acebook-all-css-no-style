@@ -14,9 +14,21 @@ This project is a clone of Facebook
 ### How to run
 
 - Clone this repo running `git clone https://github.com/99ltaylor/acebook-all-css-no-style.git`
-- Run `rackup` to start the web server
+
+- Run these commands
+```
+bundle install
+bin/rails db:create
+bin/rails db:migrate
+bundle exec rspec
+```
+
+- Run `rackup` or bin/rails server to start the web server 
 
 ### Planning
+
+#### MVP
+![MVP](https://github.com/EMDevelop/public_resources/blob/main/images/acebook/MVP.png 'MVP')
 
 #### Wireframe
 
