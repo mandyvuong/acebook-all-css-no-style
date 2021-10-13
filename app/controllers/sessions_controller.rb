@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
 
     if !! @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.i
+      session[:user_id] = @user.id
       redirect_to posts_path
     else
       message = "Something went wrong! Make sure your email and password are correct"
