@@ -12,6 +12,5 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :posts # GET, POST, PATCH, DELETE
-  resources :users
+
 end
-#http://localhost:9292/
