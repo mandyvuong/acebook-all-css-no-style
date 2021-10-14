@@ -1,0 +1,18 @@
+<h1>Single post</h1>
+<p><%= @post.message %></p>
+
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.message %>
+  </p>
+<% end %>
+
+
+<h2>Add a comment:</h2>
+<%= form_with model: [ @post, @post.comments.build ] do |form| %>
+    <%= form.label :message %><br>
+    <%= form.text_field :message %>
+    <%= form.submit %>
+<% end %>
