@@ -28,7 +28,7 @@ bundle exec rspec
 ### Planning
 
 #### MVP
-![MVP](https://github.com/EMDevelop/public_resources/blob/main/images/acebook/mvp.png 'MVP')
+![MVP](https://github.com/EMDevelop/public_resources/blob/main/images/acebook/MVP.png 'MVP')
 
 #### Wireframe
 
