@@ -9,3 +9,9 @@ RSpec.feature "Timeline", type: :feature do # This test passes and looks sound t
     expect(page).to have_content("Hello, world!")
   end
 end
+
+RSpec.feature "Timeline", type: :feature do 
+  scenario "Can submit photos and view them" do
+
+  end
+end
