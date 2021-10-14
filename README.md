@@ -32,7 +32,7 @@ bundle exec rspec
 
 #### Wireframe
 
-![wireframe](https://github.com/Jjake540/Project_resourses/blob/main/acebook/Wireframe%20-%20acebook.png?raw=true 'wireframe')
+![wireframe](https://github.com/Jjake540/Project_resourses/blob/main/acebook/Wireframe%20-%20acebook-%20update.png?raw=true 'wireframe')
 #### Trello
 
 We've organised our working day using a Trello board, following Agile principles.
