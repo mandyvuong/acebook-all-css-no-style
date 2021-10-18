@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   # login
   def create
+    session[:user_id] = nil
     @user = User.find_by(email: params[:email])
 
     if !! @user && @user.authenticate(params[:password])

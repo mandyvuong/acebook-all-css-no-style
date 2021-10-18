@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   def create
+    redirect_to root_path if !session[:user_id]
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
     # format.html { redirect_to @post, notice: 'Comment was successfully created.' }
