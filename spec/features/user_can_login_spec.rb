@@ -13,7 +13,7 @@ RSpec.feature 'User log in' do
     visit '/'
     fill_in('email', with: 'email@example.com')
     fill_in('password', with: 'supersecret123')
-    click_button 'log in'    
+    click_button('log in')    
     expect(current_path).to eq '/posts'
   end
 end

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to posts_url # this was the root_path, changed to get to posts
     else 
-      render :new
+      redirect_to action: "new"  
     end
   end
 
