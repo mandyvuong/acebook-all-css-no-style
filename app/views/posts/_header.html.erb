@@ -1,6 +1,6 @@
 
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
   
     <a class="navbar-brand" >Acebook</a>
@@ -13,7 +13,7 @@
       <ul class="navbar-nav  ms-auto">
       
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <%= link_to "Home", root_path, class:"nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Create new post", new_post_path, class:"nav-link" %>

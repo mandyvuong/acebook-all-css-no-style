@@ -1,12 +1,17 @@
-<h1>Sessions login</h1>
-
-<div>
-    <h2>Log In</h2>
-    <%= form_tag '/login' do %>
-    Email: <%= text_field_tag :email %><br>
-    Password: <%= password_field_tag :password %><br>
-    <%= submit_tag "log in" %>  
-  <% end %>
+<%= form_tag '/login' do %>
+<div class="container-md mx-auto mt-5" style="width: 50%;">
+  <div class="mb-3">
+    <%= label_tag :email, 'Email address', class:"form-label" %>
+    <%= email_field_tag :email, nil, class:"form-control" %> 
+  </div>
+  <div class="mb-3">
+    <%= label_tag :password, 'Password', class:'form-label' %>
+    <%= password_field_tag :password, nil, class:"form-control" %> 
+  </div>
+  <%= submit_tag nil, class:"btn btn-primary" %>
+  </div>
+<%end%>
+<div class="mt-5 text-center">
+  
+ <%= link_to "Sign up", new_user_path %>
 </div>
-
-<%# submit_tag not responding to the click button in feature test %>

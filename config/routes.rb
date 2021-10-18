@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
   get '/logout', to: 'sessions#destroy'
 
-  resources :posts # GET, POST, PATCH, DELETE
-
+  resources :posts do# GET, POST, PATCH, DELETE
+    resources :comments
+  end
 end
