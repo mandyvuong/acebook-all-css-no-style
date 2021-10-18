@@ -28,11 +28,11 @@ bundle exec rspec
 ### Planning
 
 #### MVP
-![MVP](https://github.com/EMDevelop/public_resources/blob/main/images/acebook/mvp.png 'MVP')
+![MVP](https://github.com/Jjake540/Project_resourses/blob/main/acebook/MVP%20-%20acebook.png?raw=true 'MVP')
 
 #### Wireframe
 
-![wireframe](https://github.com/EMDevelop/public_resources/blob/main/images/acebook/Screenshot%202021-10-11%20at%2016.26.42.png 'wireframe')
+![wireframe](https://github.com/Jjake540/Project_resourses/blob/main/acebook/Wireframe%20-%20acebook-%20update.png?raw=true 'wireframe')
 #### Trello
 
 We've organised our working day using a Trello board, following Agile principles.
