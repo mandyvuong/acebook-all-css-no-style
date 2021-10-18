@@ -1,5 +1,13 @@
-<%= form_with model: [ @post, @post.comments.build ] do |form| %>
-    <%= form.label :message %><br>
-    <%= form.text_field :message %>
-    <%= form.submit %>
+
+
+<%= form_with model: [ @post, @post.comments.build] do |form| %>
+<div class="card">
+  <div class="card-body">
+  <div class="mb-3">
+    <%= form.label :message, { class: "form-label"}%>
+    <%= form.text_field :message, { class: "form-control"} %>
+    </div>
+    <%= form.submit "Submit", class: "btn btn-primary"%>
+</div>
+</div>
 <% end %>
