@@ -10,6 +10,8 @@
     <%= f.text_field :email, class: "form-control"%><br>
     <%= f.label :password, class: "col-md-4 mt-2 control-label"%>
     <%= f.password_field :password, class: "form-control"%>
+    <%= f.label 'Upload profile picture', class: "col-md-4 mt-2 control-label" %>
+    <%= f.file_field :avatar, class: "form-control" %>
     <%= f.submit "Create Account",  class: "btn btn-default btn-primary mt-4"%>
   </div>
 
