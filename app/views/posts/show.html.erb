@@ -1,5 +1,6 @@
 <div class="row mb-3 mt-5 mx-auto" style="width: 50%;">
 <h1>Single post</h1>
+<%= image_tag(@post.image, width: 200) if @post.image.attached? %>
 <p class="mt-3"><%= @post.message %></p>
 
 <h2 class="mb-3">Comments</h2>
