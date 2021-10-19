@@ -8,6 +8,8 @@
   <% end %>
 </ul>
 
+<p><%= @post.likes.count %> <%= (@posts.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+
 <%= link_to new_post_path do %>
   New post
 <% end %>

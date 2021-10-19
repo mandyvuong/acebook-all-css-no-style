@@ -4,6 +4,8 @@
 <h2>Comments</h2>
 <%= render @post.comments %>
 
+<%= button_to 'Like', post_likes_path(@post), method: :post %>
+<p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
