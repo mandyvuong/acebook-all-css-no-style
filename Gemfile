@@ -60,3 +60,5 @@ gem 'turbolinks', '~> 5'
 
 # High-level wrapper for processing images for the web with ImageMagick or libvips
 gem 'image_processing'
+
+gem "aws-sdk-s3", require: false
