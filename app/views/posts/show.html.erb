@@ -1,6 +1,7 @@
 <div class="row mb-3 mt-5 mx-auto" style="width: 50%;">
 <h1>Single post</h1>
 <p><%= @post.message %></p>
+<%= image_tag post.image %>
 
 <h2>Comments</h2>
 <%= render @post.comments %>
