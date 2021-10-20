@@ -2,21 +2,29 @@
 <div class="row mb-3 mt-5 mx-auto" style="width: 50%;">
 <h1>Posts</h1>
 
-<ul class="list-group">
-  <% @posts.reverse_each do |post| %>
-    <li class="list-group-item ">
-    <% @user = post.user %>
+  <ul class="list-group">
+    <% @posts.reverse_each do |post| %>
+      <li class="list-group-item ">
+       <% @user = post.user %>
     <% @post_date = post.created_at.strftime("%B %d %Y @ %l:%M%P") %>
     <%= image_tag(@user.avatar, width: 50) if @user.avatar.attached? %>
       <%= "#{@user.first_name} #{@user.last_name} posted on #{@post_date}: " %>
-      <%= link_to post.message, post, class:"text-decoration-none" %>
-    </li>
-  <% end %>
-</ul>
-<div class="mt-4">
-<%= link_to new_post_path, class:"text-decoration-none" do %>
-  New post
+        <%= link_to post.message, post, class:"text-decoration-none" %>
+      </li>
+      <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+  <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+<% if pre_like %>
+  <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
+<% else %>
+  <%= button_to 'Like', post_likes_path(post), method: :post %>
 <% end %>
+      <%= link_to 'Delete', post_path(post), method: :delete, id: "delete_post_#{post.id}_from_index", data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    
+  </ul>
+  <div class="mt-4">
+  <%= link_to new_post_path, class:"text-decoration-none" do %>
+    New post
+  <% end %>
+  </div>
 </div>
-</div>
-

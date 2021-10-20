@@ -62,3 +62,5 @@ gem 'turbolinks', '~> 5'
 gem 'image_processing'
 
 gem "aws-sdk-s3", require: false
+
+gem "font-awesome-rails"

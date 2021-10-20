@@ -9,4 +9,5 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { minimum: 10, maximum: 255 },format: { with: VALID_EMAIL_REGEX },uniqueness: { case_sensitive: false }
 
   has_one_attached :avatar
+  has_many :likes, dependent: :destroy
 end
