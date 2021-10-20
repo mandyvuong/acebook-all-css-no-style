@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def create
     redirect_to root_path if !session[:user_id]
     @user = User.find(session[:user_id])
-    @post = @user.post.create(post_params)
+    @post = @user.posts.create(post_params)
     redirect_to posts_url
   end
 
