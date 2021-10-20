@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+
+
   def new
     redirect_to root_path if !session[:user_id] 
     @post = Post.new
@@ -8,6 +10,16 @@ class PostsController < ApplicationController
     redirect_to root_path if !session[:user_id]
     @post = Post.create(post_params)
     redirect_to posts_url
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @comment = @post.comments.where(post_id: @post.id) 
+    @comment.each do |comment|
+      comment.destroy
+    end
+    @post.destroy
+    redirect_to posts_path, notice: 'Your post was deleted successfully'
   end
 
   def index
@@ -25,4 +37,8 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:message, :image)
   end
+
+
+
+
 end
