@@ -6,8 +6,9 @@
   <% @posts.reverse_each do |post| %>
     <li class="list-group-item ">
     <% @user = post.user %>
+    <% @post_date = post.created_at.strftime("%B %d %Y @ %l:%M%P") %>
     <%= image_tag(@user.avatar, width: 50) if @user.avatar.attached? %>
-      <%= "#{@user.first_name} #{@user.last_name} posted @ #{post.created_at}: " %>
+      <%= "#{@user.first_name} #{@user.last_name} posted on #{@post_date}: " %>
       <%= link_to post.message, post, class:"text-decoration-none" %>
     </li>
   <% end %>
@@ -18,3 +19,4 @@
 <% end %>
 </div>
 </div>
+
