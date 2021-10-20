@@ -5,6 +5,9 @@
 <ul class="list-group">
   <% @posts.reverse_each do |post| %>
     <li class="list-group-item ">
+    <% @user = post.user %>
+    <%= image_tag(@user.avatar, width: 50) if @user.avatar.attached? %>
+      <%= "#{@user.first_name} #{@user.last_name} posted @ #{post.created_at}: " %>
       <%= link_to post.message, post, class:"text-decoration-none" %>
     </li>
   <% end %>
