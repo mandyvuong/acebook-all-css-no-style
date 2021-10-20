@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :posts
+  has_many :comments
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
 
   validates :first_name, presence: true
