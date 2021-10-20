@@ -14,4 +14,9 @@ Rails.application.routes.draw do
   resources :posts do# GET, POST, PATCH, DELETE
     resources :comments
   end
+
+  resources :users do
+    resources :posts
+  end
+  
 end

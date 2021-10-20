@@ -6,8 +6,8 @@ class PostsController < ApplicationController
 
   def create
     redirect_to root_path if !session[:user_id]
+    @user_id = session[:user_id]
     @post = Post.create(post_params)
-   
     redirect_to posts_url
   end
 
@@ -24,7 +24,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    @user = @users.user_id
     params.require(:post).permit(:message, :image, :user_id)
   end
 end
