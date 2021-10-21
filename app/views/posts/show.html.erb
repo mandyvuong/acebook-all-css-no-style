@@ -1,54 +1,19 @@
-<div class="row mb-3 mt-5 mx-auto" style="width: 50%;">
+<div class="row mb-3 mt-5 mx-auto" style="width: 50%">
 
-  <h3><%= "#{@post.user.first_name} #{@post.user.last_name} has posted:" %></h3>
-
-  <%= image_tag(@post.image, width: 200) if @post.image.attached? %>
-  <p class="mt-3"><%= @post.message %></p>
-  <!--<%= button_to 'Like', post_likes_path(@post), method: :post %>-->
-	<p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-
-  <div class="button-box col-lg-12">
-  <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
-  <% if pre_like %>
-    <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
-  <% else %>
-    <%= button_to 'Like', post_likes_path(@post), method: :post %>
-  <% end %>
-
-
-    <%= button_to 'Delete', post_path(@post), method: :delete if current_user.id == @post.user.id %>
-
-
-  <!--<h4 class="mb-3">Comments</h4>-->
   
-  
-  
-  <% @post.comments.each do |comment| %>
-    <% @user = comment.user %>
-    <%= "#{@user.first_name} #{@user.last_name} has commented: #{comment.message}" %><br>
-  <% end %>
-  <h4 class="mb-3">Add a comment:</h4>
-  <%= render 'comments/form' %>
 
-
-  <%= fa_icon "trash" %>
-  <%= fa_icon "thumbs-down" %>
-  <%= fa_icon "thumbs-up" %>
-
-
-    <div class="container mt-5 mb-5">
+    <div class="container mt-5 mb-20">
       <div class="row d-flex align-items-center justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-10">
           <div class="card">
             <div class="d-flex justify-content-between p-2 px-3">
               <div class="d-flex flex-row align-items-center">
-
-               <%= " #{@post.user.first_name} #{@post.user.last_name}" %>
+                <%= image_tag(@post.user.avatar, :class=> "img-circular") if
+                @post.user.avatar.attached? %> <%= " #{@post.user.first_name}
+                #{@post.user.last_name}" %>
                 <div class="d-flex flex-column ml-2">
-                  <span class="font-weight-bold">
-                    <%= @post_date %>
-                  </span>
-                  <small class="text-primary">  </small>
+                  <span class="font-weight-bold"> <%= @post_date %> </span>
+                  <small class="text-primary"> </small>
                 </div>
               </div>
               <div class="d-flex flex-row mt-1 ellipsis">
@@ -58,49 +23,56 @@
             </div>
             <%= image_tag(@post.image, width: 200) if @post.image.attached? %>
             <div class="p-2">
-              <p class="text-justify">
-                <%= @post.message %>
-              </p>
+              <p class="text-justify"><%= @post.message %></p>
               <hr />
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex flex-row icons d-flex align-items-center">
-                  <% pre_like = @post.likes.find { |like| like.user_id ==
-                  current_user.id} %> <% if pre_like %> <%= button_to 'Unlike',
-                  post_like_path(@post, pre_like), method: :delete %> <% else %>
-                  <%= button_to 'Like', post_likes_path(@post), method: :post %>
-                  <%= button_to 'Delete', post_path(@post), method: :delete %>
+                  <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+                    <% if pre_like %>
+                      <%= button_to post_like_path(@post, pre_like), method: :delete do %>
+                      <%= fa_icon "thumbs-down" %>
+                      <% end %>
+                    <% else %>
+                    <%= button_to post_likes_path(@post), method: :post do %>
+                    <%= fa_icon "thumbs-up" %>
+                    <% end %>
                   <% end %>
+
+                  <% if current_user.id == @post.user.id %>
+                    <%= button_to post_path(@post), method: :delete do %>
+                      <%= fa_icon "trash" %>
+                    <% end %>
+                  <% end %>  
                 </div>
                 <div class="d-flex flex-row muted-color">
-                  <span>
-
-                  </span>
+                  <span> </span>
                   <span class="ml-2"></span>
                 </div>
               </div>
               <hr />
+
+              <% @post.comments.each do |comment| %>
               <div class="comments">
-                        <div class="d-flex flex-row mb-2"> <img src="https://i.imgur.com/9AZ2QX1.jpg" width="40" class="rounded-image">
-                            <div class="d-flex flex-column ml-2"> <span class="name">Daniel Frozer</span> <small class="comment-text">I like this alot! thanks alot</small>
-                                <div class="d-flex flex-row align-items-center status"> <small>Like</small> <small>Reply</small> <small>Translate</small> <small>18 mins</small> </div>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row mb-2"> <img src="https://i.imgur.com/1YrCKa1.jpg" width="40" class="rounded-image">
-                            <div class="d-flex flex-column ml-2"> <span class="name">Elizabeth goodmen</span> <small class="comment-text">Thanks for sharing!</small>
-                                <div class="d-flex flex-row align-items-center status"> <small>Like</small> <small>Reply</small> <small>Translate</small> <small>8 mins</small> </div>
-                            </div>
-                        </div>
-                        <div class="comment-input"> <input type="text" class="form-control">
-                            <div class="fonts"> <i class="fa fa-camera"></i> </div>
-                        </div>
-                    </div>
+                <div class="d-flex flex-row mb-2">
+                  <%= image_tag(comment.user.avatar, :class=> "img-circular") if
+                  comment.user.avatar.attached? %>
+                  <div class="d-flex flex-column ml-2">
+                    <span class="name">
+                      <%= " #{comment.user.first_name}
+                      #{comment.user.last_name}" %>
+                    </span>
+                    <small class="comment-text"> <%= comment.message %> </small>
+                    <div
+                      class="d-flex flex-row align-items-center status"
+                    ></div>
+                  </div>
                 </div>
+                <% end %> <%= render 'comments/form' %>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
-
+  </div>
 </div>

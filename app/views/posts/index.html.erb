@@ -4,32 +4,16 @@
   <ul class="list-group">
     <% @posts.reverse_each do |post| %>
 
-    <li class="list-group-item">
       <% @user = post.user %> <% @post_date = post.created_at.strftime("%B %d %Y
-      @ %l:%M%P") %> <%= image_tag(@user.avatar, width: 50) if
-      @user.avatar.attached? %> <%= "#{@user.first_name} #{@user.last_name}
-      posted on #{@post_date}: " %> <%= link_to post.message, post,
-      class:"text-decoration-none" %>
-    </li>
-
-    <p>
-      <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
-    </p>
-    <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-    <% if pre_like %> <%= button_to 'Unlike', post_like_path(post, pre_like),
-    method: :delete %> <% else %> <%= button_to 'Like', post_likes_path(post),
-    method: :post %> <% end %> <%= link_to 'Delete', post_path(post), method:
-    :delete, id: "delete_post_#{post.id}_from_index", data: { confirm: 'Are you
-    sure?' } %>
+      @ %l:%M%P") %> 
 
     <div class="container mt-5 mb-5">
       <div class="row d-flex align-items-center justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-10">
           <div class="card">
             <div class="d-flex justify-content-between p-2 px-3">
-              <div class="d-flex flex-row align-items-center">
-                <%= image_tag(@user.avatar, width: 50) if @user.avatar.attached?
-                %>
+              <div class="d-flex flex-row align-items-center justify-content-center">
+                  <%= image_tag(@user.avatar, :class=> "img-circular") if @user.avatar.attached? %>
                 <div class="d-flex flex-column ml-2">
                   <span class="font-weight-bold">
                     <%= "#{@user.first_name} #{@user.last_name} " %>
@@ -42,7 +26,9 @@
                 <i class="fa fa-ellipsis-h"></i>
               </div>
             </div>
+            <div class="d-flex align-items-center justify-content-center w-100">
             <%= image_tag(post.image, width: 200) if post.image.attached? %>
+            </div>
             <div class="p-2">
               <p class="text-justify">
                 <%= link_to post.message, post, class:"text-decoration-none" %>
@@ -50,10 +36,15 @@
               <hr />
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex flex-row icons d-flex align-items-center">
-                  <% pre_like = post.likes.find { |like| like.user_id ==
-                  current_user.id} %> <% if pre_like %> <%= button_to 'Unlike',
-                  post_like_path(post, pre_like), method: :delete %> <% else %>
-                  <%= button_to 'Like', post_likes_path(post), method: :post %>
+                  <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+                    <% if pre_like %>
+                      <%= button_to post_like_path(post, pre_like), method: :delete do %>
+                        <%= fa_icon "thumbs-down" %>
+                      <% end %>
+                    <% else %>
+                    <%= button_to post_likes_path(post), method: :post do %>
+                      <%= fa_icon "thumbs-up" %>
+                    <% end %>
                   <% end %>
                 </div>
                 <div class="d-flex flex-row muted-color">
@@ -65,6 +56,7 @@
                 </div>
               </div>
               <hr />
+              
             </div>
           </div>
         </div>
@@ -72,29 +64,6 @@
     </div>
 
     <% end %>
-  </ul>
-  <div class="mt-4">
-    <%= link_to new_post_path, class:"text-decoration-none" do %> New post <%
-    end %>
-  </div>
-</div>
-      <li class="list-group-item ">
-        <% @user = post.user %>
-        <% @post_date = post.created_at.strftime("%B %d %Y @ %l:%M%P") %>
-        <%= image_tag(@user.avatar, width: 50) if @user.avatar.attached? %>
-        <%= "#{@user.first_name} #{@user.last_name} posted on #{@post_date}: " %>
-        <%= link_to post.message, post, class:"text-decoration-none" %>
-      </li>
-      <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
-  <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-    <% if pre_like %>
-        <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
-    <% else %>
-        <%= button_to 'Like', post_likes_path(post), method: :post %>
-    <% end %>
-      
-    <% end %> 
-  </ul>
   
 </div>
