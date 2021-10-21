@@ -15,12 +15,13 @@
     <%= button_to 'Like', post_likes_path(@post), method: :post %>
   <% end %>
 
+  <%# <%= button_to 'Delete', post_path(@post), method: :delete if current_user.id == @post.user.id %>
 
-    <%= button_to 'Delete', post_path(@post), method: :delete if current_user.id == @post.user.id %>
-
-
-  <!--<h4 class="mb-3">Comments</h4>-->
-  
+  <% if current_user.id == @post.user.id %>
+    <%= button_to post_path(@post), method: :delete do %>
+      <%= fa_icon "trash" %>
+    <% end %>
+  <% end %>  
   
   
   <% @post.comments.each do |comment| %>
