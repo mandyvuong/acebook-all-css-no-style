@@ -1,30 +1,73 @@
-
-<div class="row mb-3 mt-5 mx-auto" style="width: 50%;">
-<h1>Posts</h1>
+<div class="row mb-3 mt-5 mx-auto" style="width: 50%">
+  <h1>Posts</h1>
 
   <ul class="list-group">
     <% @posts.reverse_each do |post| %>
-      <li class="list-group-item ">
-        <% @user = post.user %>
-        <% @post_date = post.created_at.strftime("%B %d %Y @ %l:%M%P") %>
-        <% if @user.avatar.attached? %>
-          <%= image_tag(@user.avatar, :class=> "img-circular") %>
-        <% else %>
-          <%= image_tag(@user.gravatar_url, :class=> "img-circular") %>
-        <% end %>
-        <%= "#{@user.first_name} #{@user.last_name} posted on #{@post_date}: " %>
-        <%= link_to post.message, post, class:"text-decoration-none" %>
-      </li>
-      <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
-  <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-    <% if pre_like %>
-        <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
-    <% else %>
-        <%= button_to 'Like', post_likes_path(post), method: :post %>
+      <% @user = post.user %> <% @post_date = post.created_at.strftime("%B %d %Y
+      @ %l:%M%P") %> 
+
+    <div class="container mt-5 mb-5">
+      <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-10">
+          <div class="card">
+            <div class="d-flex justify-content-between p-2 px-3">
+              <div class="d-flex flex-row align-items-center justify-content-center">
+                <% if @user.avatar.attached? %>
+                  <%= image_tag(@user.avatar, :class=> "img-circular")%>
+                <% else %>
+                  <%= image_tag(@user.gravatar_url, :class=> "img-circular") %>
+                <% end %>
+                <div class="d-flex flex-column ml-2">
+                  <span class="font-weight-bold">
+                    <%= "#{@user.first_name} #{@user.last_name} " %>
+                  </span>
+                  <small class="text-primary"> Posted </small>
+                </div>
+              </div>
+              <div class="d-flex flex-row mt-1 ellipsis">
+                <small class="mr-2"> <%= @post_date %> </small>
+                <i class="fa fa-ellipsis-h"></i>
+              </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-center w-100">
+            <%= image_tag(post.image, width: 200) if post.image.attached? %>
+            </div>
+            <div class="p-2">
+              <p class="text-justify">
+                <%= link_to post.message, post, class:"text-decoration-none" %>
+              </p>
+              <hr />
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex flex-row icons d-flex align-items-center">
+                  <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+                    <% if pre_like %>
+                      <%= button_to post_like_path(post, pre_like), method: :delete do %>
+                        <%= fa_icon "thumbs-down" %>
+                      <% end %>
+                    <% else %>
+                    <%= button_to post_likes_path(post), method: :post do %>
+                      <%= fa_icon "thumbs-up" %>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="d-flex flex-row muted-color">
+                  <span>
+                    <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like'
+                    : 'Likes'%>
+                  </span>
+                  <span class="ml-2"></span>
+                </div>
+              </div>
+              <hr />
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <% end %>
-      
-    <% end %> 
-  </ul>
+
   
 </div>
