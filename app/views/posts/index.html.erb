@@ -2,24 +2,16 @@
 <div class="row mb-3 mt-5 mx-auto" style="width: 50%;">
 <h1>Posts</h1>
 
-<style>  # if you are putting this code in application.css then no need to write <style> tag
-.img-circular{
- width: 50px;
- height: 50px;
- background-size: cover;
- display: block;
- border-radius: 100px;
- -webkit-border-radius: 100px;
- -moz-border-radius: 100px;
-}
-</style>
-
   <ul class="list-group">
     <% @posts.reverse_each do |post| %>
       <li class="list-group-item ">
         <% @user = post.user %>
         <% @post_date = post.created_at.strftime("%B %d %Y @ %l:%M%P") %>
-        <%= image_tag(@user.avatar, :class=> "img-circular") if @user.avatar.attached? %>
+        <% if @user.avatar.attached? %>
+          <%= image_tag(@user.avatar, :class=> "img-circular") %>
+        <% else %>
+          <%= image_tag(@user.gravatar_url, :class=> "img-circular") %>
+        <% end %>
         <%= "#{@user.first_name} #{@user.last_name} posted on #{@post_date}: " %>
         <%= link_to post.message, post, class:"text-decoration-none" %>
       </li>
