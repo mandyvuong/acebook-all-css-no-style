@@ -1,6 +1,5 @@
 <div class="row mb-3 mt-5 mx-auto" style="width: 50%;">
   <h3>Single post</h3>
-  <%= image_tag(@post.image, width: 200) if @post.image.attached? %>
   <p class="mt-3"><%= @post.message %></p>
   <!--<%= button_to 'Like', post_likes_path(@post), method: :post %>-->
 	<p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
