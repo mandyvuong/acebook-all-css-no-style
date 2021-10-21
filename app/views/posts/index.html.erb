@@ -18,8 +18,8 @@
       <% else %>
         <%= button_to 'Like', post_likes_path(post), method: :post %>
       <% end %>
-      <%= link_to 'Delete', post_path(post), method: :delete, id: "delete_post_#{post.id}_from_index", data: { confirm: 'Are you sure?' } %>
-    <% end %>
+      <%# <%= link_to 'Delete', post_path(post), method: :delete, id: "delete_post_#{post.id}_from_index", data: { confirm: 'Are you sure?' } %>
+      <% end %>
     
   </ul>
   <div class="mt-4">
