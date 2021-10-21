@@ -14,8 +14,14 @@
 
   <%= button_to 'Delete', post_path(@post), method: :delete %>
 
-  <h4 class="mb-3">Comments</h4>
-  <%= render @post.comments %>
+  <!--<h4 class="mb-3">Comments</h4>-->
+  
+  
+  
+  <% @post.comments.each do |comment| %>
+    <% @user = comment.user %>
+    <%= "#{@user.first_name} #{@user.last_name} has commented: #{comment.message}" %><br>
+  <% end %>
   <h4 class="mb-3">Add a comment:</h4>
   <%= render 'comments/form' %>
 
