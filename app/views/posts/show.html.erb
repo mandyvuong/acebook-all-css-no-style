@@ -1,5 +1,5 @@
 <div class="row mb-3 mt-5 mx-auto" style="width: 50%;">
-  <h3>Single post</h3>
+  <h3><%= "#{@post.user.first_name} #{@post.user.last_name} has posted:" %></h3>
   <%= image_tag(@post.image, width: 200) if @post.image.attached? %>
   <p class="mt-3"><%= @post.message %></p>
   <!--<%= button_to 'Like', post_likes_path(@post), method: :post %>-->
@@ -14,8 +14,14 @@
 
     <%= button_to 'Delete', post_path(@post), method: :delete if current_user.id == @post.user.id %>
 
-  <h4 class="mb-3">Comments</h4>
-  <%= render @post.comments %>
+  <!--<h4 class="mb-3">Comments</h4>-->
+  
+  
+  
+  <% @post.comments.each do |comment| %>
+    <% @user = comment.user %>
+    <%= "#{@user.first_name} #{@user.last_name} has commented: #{comment.message}" %><br>
+  <% end %>
   <h4 class="mb-3">Add a comment:</h4>
   <%= render 'comments/form' %>
 

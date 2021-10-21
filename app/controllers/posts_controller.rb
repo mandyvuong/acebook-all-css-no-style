@@ -39,7 +39,4 @@ class PostsController < ApplicationController
     params.require(:post).permit(:message, :image, :user_id)
   end
 
-
-
-
 end
