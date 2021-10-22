@@ -52,7 +52,9 @@
                   <% end %>  
                 </div>
                 <div class="d-flex flex-row muted-color">
-                  <span> </span>
+                  <span> 
+                    <%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like'  : 'Likes'%>
+                  </span>
                   <span class="ml-2"></span>
                 </div>
               </div>
