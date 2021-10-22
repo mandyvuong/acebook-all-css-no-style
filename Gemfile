@@ -10,6 +10,10 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1'
 
+#CORS
+gem 'rack-cors'
+
+
 #Added so that you can use passwords in Dev and Test environments
 gem 'dotenv-rails', groups: [:development, :test]
 
