@@ -5,7 +5,7 @@
       <% @user = post.user %> <% @post_date = post.created_at.strftime("%B %d %Y
       @ %l:%M%P") %>
     <div class="container mt-5 mb-5">
-      <div class="row d-flex align-items-center justify-content-center">
+      <div class="row d-flex align-items-center justify-content-center width=650">
         <div class="col-md-10">
           <div class="card">
             <div class="d-flex justify-content-between p-2 px-3">
@@ -25,7 +25,6 @@
               </div>
               <div class="d-flex flex-row mt-1 ellipsis">
                 <small class="mr-2"> <%= @post_date %> </small>
-                <i class="fa fa-ellipsis-h"></i>
               </div>
             </div>
             <div class="d-flex align-items-center justify-content-center w-100">
